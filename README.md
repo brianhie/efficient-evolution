@@ -4,7 +4,7 @@ Scripts for reproducing results in the paper "Efficient evolution of human antib
 
 To download data, run the commands:
 ```bash
-wget https://zenodo.org/record/6347795/files/data.tar.gz
+wget https://zenodo.org/record/6415457/files/data.tar.gz
 tar xvf data.tar.gz
 ```
 
