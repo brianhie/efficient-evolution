@@ -1,6 +1,6 @@
 # Efficient evolution from protein language models
 
-Scripts for reproducing results in the paper "Efficient evolution of human antibodies from general protein language models and sequence information alone" by Hie et al.
+Scripts for reproducing results in the paper ["Efficient evolution of human antibodies from general protein language models and sequence information alone"](https://www.biorxiv.org/content/10.1101/2022.04.10.487811v1) by Hie et al.
 
 To download data, run the commands:
 ```bash
