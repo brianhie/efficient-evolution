@@ -46,22 +46,16 @@ if __name__ == '__main__':
 
     model = get_model(args)
 
-    seqs, name_seqs = load_data()
-
-    signal_peptide = str(SeqIO.read('data/constant/signal_peptide.fa', 'fasta').seq)
-    heavy_seq = str(SeqIO.read('data/constant/igg_heavy.fa', 'fasta').seq)
-    light_seq = str(SeqIO.read('data/constant/igg_light_kappa.fa', 'fasta').seq)
-
-    vh = str(name_seqs['mAb114_gH_VH'])
-    vl = str(name_seqs['mAb114_UCA_VL'])
-    
-    lsig = len(signal_peptide)
-    lhvy = len(heavy_seq)
-    llgt = len(light_seq)
+    vh = (
+        'EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYDMHWVRQATGKGLEWVSAIGTAGDTYYPGSVKGRFTISRENAKNSLYLQMNSLRAGDTAVYYCVRSDRGVAGLFDSWGQGTLVTVSS'
+    )
+    vl = (
+        'DIQMTQSPSSLSASVGDRVTITCRASQGISNYLAWYQQKPGKVPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISSLQPEDVATYYCQKYNSAPLTFGGGTKVEIK'
+    )
 
     new = reconstruct(vh, model, decode_kwargs={ 'exclude': 'unnatural' })
-    compare(vh, new, namespace='mAb114-UCA VH')
+    compare(vh, new, namespace='mAb114 UCA VH')
     print('')
 
     new = reconstruct(vl, model, decode_kwargs={ 'exclude': 'unnatural' })
-    compare(vl, new, namespace='mAb114-UCA VL')
+    compare(vl, new, namespace='mAb114 UCA VK')

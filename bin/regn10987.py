@@ -46,11 +46,13 @@ if __name__ == '__main__':
 
     model = get_model(args)
 
-    seqs, name_seqs = load_data()
+    vh = (
+        'QVQLVESGGGVVQPGRSLRLSCAASGFTFSNYAMYWVRQAPGKGLEWVAVISYDGSNKYYADSVKGRFTISRDNSKNTLYLQMNSLRTEDTAVYYCASGSDYGDYLLVYWGQGTLVTVSS'
+    )
+    vl = (
+        'QSALTQPASVSGSPGQSITISCTGTSSDVGGYNYVSWYQQHPGKAPKLMIYDVSKRPSGVSNRFSGSKSGNTASLTISGLQSEDEADYYCNSLTSISTWVFGGGTKLTVL'
+    )
 
-    vh = str(name_seqs['REGN10987_VH'])
-    vl = str(name_seqs['REGN10987_VL'])
-    
     new = reconstruct(vh, model, decode_kwargs={ 'exclude': 'unnatural' })
     compare(vh, new, namespace='REGN10987 VH')
     print('')
