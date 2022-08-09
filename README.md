@@ -8,7 +8,7 @@ To evaluate the model on a new sequence, clone this repository and run
 ```bash
 python bin/recommend.py [sequence]
 ```
-where `[sequence]` is the wildtype protein sequence you want to evolve.
+where `[sequence]` is the wildtype protein sequence you want to evolve. The script will output a list of substitutions and the number of recommending language models.
 
 ### Paper analysis scripts
 
