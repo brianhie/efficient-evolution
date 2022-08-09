@@ -1,8 +1,18 @@
 # Efficient evolution from protein language models
 
-Scripts for reproducing results in the paper ["Efficient evolution of human antibodies from general protein language models and sequence information alone"](https://www.biorxiv.org/content/10.1101/2022.04.10.487811v1).
+Scripts for running the analysis described in the paper ["Efficient evolution of human antibodies from general protein language models and sequence information alone"](https://www.biorxiv.org/content/10.1101/2022.04.10.487811v1).
 
-To download data, run the commands:
+### Running the model
+
+To evaluate the model on a new sequence, clone this repository and run
+```bash
+python bin/recommend.py [sequence]
+```
+where `[sequence]` is the wildtype protein sequence you want to evolve.
+
+### Paper analysis scripts
+
+To reproduce the analysis in the paper, first download and extract data with the commands:
 ```bash
 wget https://zenodo.org/record/6968342/files/data.tar.gz
 tar xvf data.tar.gz
