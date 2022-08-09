@@ -9,21 +9,18 @@ def get_model(args):
         model = FBModel(
             'esm1b_t33_650M_UR50S',
             repr_layer=[-1],
-            length_norm=args.lnorm,
         )
     elif args.model_name.startswith('esm1v'):
         from fb_model import FBModel
         model = FBModel(
             'esm1v_t33_650M_UR90S_' + args.model_name[-1],
             repr_layer=[-1],
-            length_norm=args.lnorm,
         )
     elif args.model_name == 'esm-msa':
         from fb_model import FBModel
         model = FBModel(
             'esm_msa1_t12_100M_UR50S',
             repr_layer=[-1],
-            length_norm=args.lnorm,
         )
     elif args.model_name == 'prose':
         from prose_model import ProseModel

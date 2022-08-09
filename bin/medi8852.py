@@ -19,8 +19,6 @@ def parse_args():
                         help='Model namespace')
     parser.add_argument('--model-name', type=str, default='esm-msa',
                         help='Type of language model (e.g., esm1b, esm-msa)')
-    parser.add_argument('--lnorm', action='store_true', default=False,
-                        help='Softmax length normalization')
     args = parser.parse_args()
     return args
 

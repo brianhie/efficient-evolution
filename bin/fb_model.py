@@ -3,10 +3,9 @@ from esm import Alphabet, FastaBatchedDataset, ProteinBertModel, pretrained
 import numpy as np
 
 class FBModel(object):
-    def __init__(self, name, repr_layer=[-1], length_norm=False):
+    def __init__(self, name, repr_layer=[-1]):
         self.name_ = name
         self.repr_layer_ = repr_layer
-        self.length_norm_ = length_norm
 
         model, alphabet = pretrained.load_model_and_alphabet(name)
         model.eval()
@@ -139,16 +138,10 @@ class FBModel(object):
     def decode(self, embedding):
         with torch.no_grad():
             embedding = torch.from_numpy(embedding)
-
             if torch.cuda.is_available():
                 x = embedding.to(device='cuda', non_blocking=True)
 
             logits = self.model_.lm_head(x)
-
-            if self.length_norm_:
-                lsoftmax = torch.nn.LogSoftmax(dim=0)
-                logits = lsoftmax(logits)
-            
             logits = logits.to(device='cpu').numpy()
 
         return logits
