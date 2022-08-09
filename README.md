@@ -1,4 +1,4 @@
-# Efficient evolution from protein language models
+# Efficient evolution from general protein language models
 
 Scripts for running the analysis described in the paper ["Efficient evolution of human antibodies from general protein language models and sequence information alone"](https://www.biorxiv.org/content/10.1101/2022.04.10.487811v1).
 
