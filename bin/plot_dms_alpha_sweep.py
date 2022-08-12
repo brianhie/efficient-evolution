@@ -101,7 +101,7 @@ if __name__ == '__main__':
 
     dms_lm_fname = 'target/log/dms.log'
     df_lm = load_dms_lm(dms_lm_fname)
-    max_models = 3
+    max_models = 2
 
     for namespace, dms_name, cutoff in settings:
         df_setting = df_lm[
