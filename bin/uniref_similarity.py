@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     closest = {}
     min_score = -1
-    n_closest, max_closest = 0, 2000
+    n_closest, max_closest = 0, 10000
     
     for record in SeqIO.parse(fname_database, 'fasta'):
         seq = str(record.seq)
