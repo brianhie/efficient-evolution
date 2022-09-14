@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument(
         '--alpha',
         type=float,
-        default=None
+        default=None,
         help='alpha stringency parameter'
     )
     args = parser.parse_args()
