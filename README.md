@@ -10,6 +10,8 @@ python bin/recommend.py [sequence]
 ```
 where `[sequence]` is the wildtype protein sequence you want to evolve. The script will output a list of substitutions and the number of recommending language models.
 
+To recommend mutations to antibody variable domain sequences, we have simply run the above script separately on the heavy and light chain sequences.
+
 ### Paper analysis scripts
 
 To reproduce the analysis in the paper, first download and extract data with the commands:
