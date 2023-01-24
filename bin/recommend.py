@@ -1,7 +1,4 @@
-from amis import (
-    get_model_name,
-    reconstruct_multi_models,
-)
+from amis import reconstruct_multi_models
 
 def parse_args():
     import argparse
@@ -29,11 +26,11 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    models = [
-        get_model_name(model_name) for model_name in args.model_names
-    ]
-
-    mutations_models = reconstruct_multi_models(args.sequence, models, alpha=args.alpha)
+    mutations_models = reconstruct_multi_models(
+        args.sequence,
+        args.model_names,
+        alpha=args.alpha,
+    )
     for k, v in sorted(mutations_models.items(), key=lambda item: -item[1]):
         mut_str = f'{k[1]}{k[0] + 1}{k[2]}'
         print(f'{mut_str}\t{v}')

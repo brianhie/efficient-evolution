@@ -203,9 +203,22 @@ def diff(seq_old, seq_new, start=0, end=None):
             different_muts.append((idx, ch_old, ch_new))
     return different_muts
     
-def reconstruct_multi_models(wt_seq, models, alpha=None, return_names=False):
+def reconstruct_multi_models(
+        wt_seq,
+        model_names=[
+            'esm1b',
+            'esm1v1',
+            'esm1v2',
+            'esm1v3',
+            'esm1v4',
+            'esm1v5',
+        ],
+        alpha=None,
+        return_names=False,
+):
     mutations_models, mutations_model_names = {}, {}
-    for model in models:
+    for model_name in model_names:
+        model = get_model_name(model_name)
         if alpha is None:
             wt_new = reconstruct(
                 wt_seq, model, decode_kwargs={ 'exclude': 'unnatural' }
@@ -221,12 +234,13 @@ def reconstruct_multi_models(wt_seq, models, alpha=None, return_names=False):
                 mutations_model_names[mutation] = []
             mutations_models[mutation] += 1
             mutations_model_names[mutation].append(model.name_)
+        del model
 
     if return_names:
         return mutations_models, mutations_model_names
 
     return mutations_models
-    
+
 def evolve(seq_uca, model, n_generations=1):
     print(f'Gen 0: {seq_uca}')
     seq_curr = seq_uca

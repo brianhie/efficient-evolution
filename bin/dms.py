@@ -2,10 +2,7 @@ import numpy as np
 import pandas as pd
 import scipy.stats as ss
 
-from amis import (
-    get_model_name,
-    reconstruct_multi_models,
-)
+from amis import reconstruct_multi_models
 
 def parse_args():
     import argparse
@@ -26,7 +23,7 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def dms_results(fname, models, alpha=None,):
+def dms_results(fname, model_names, alpha=None,):
     namespace = fname.split('/')[-1].split('.')[0]
     with open(fname):
         df = pd.read_csv(fname, delimiter=',')
@@ -39,7 +36,7 @@ def dms_results(fname, models, alpha=None,):
         else:
             wt_seq += aa_orig
 
-    mutations_models = reconstruct_multi_models(wt_seq, models, alpha=alpha)
+    mutations_models = reconstruct_multi_models(wt_seq, model_names, alpha=alpha)
 
     mutation_scores, studies = {}, []
     for column in df.columns:
@@ -70,10 +67,6 @@ def dms_results(fname, models, alpha=None,):
 if __name__ == '__main__':
     args = parse_args()
 
-    models = [
-        get_model_name(model_name) for model_name in args.model_names
-    ]
-    
     fnames = [
         'data/dms/dms_adrb2.csv',
         'data/dms/dms_bla.csv',
@@ -87,4 +80,4 @@ if __name__ == '__main__':
     ]
 
     for fname in fnames:
-        dms_results(fname, models, alpha=args.alpha)
+        dms_results(fname, args.model_names, alpha=args.alpha)

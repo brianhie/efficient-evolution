@@ -1,10 +1,7 @@
 import pandas as pd
 import time
 
-from amis import (
-    get_model_name,
-    reconstruct_multi_models,
-)
+from amis import reconstruct_multi_models
 from utils import tprint
 
 
@@ -37,10 +34,6 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    models = [
-        get_model_name(model_name) for model_name in args.model_names
-    ]
-    
     df = pd.read_csv(args.seq_fname, sep=',')
 
     data = []
@@ -60,7 +53,7 @@ if __name__ == '__main__':
         for wt_seq in [ vh, vl, vh_bi, vl_bi ]:
             if wt_seq == 'na':
                 continue
-            mutations_models = reconstruct_multi_models(wt_seq, models)
+            mutations_models = reconstruct_multi_models(wt_seq, args.model_names)
             for mutation, n_models in sorted(
                     mutations_models.items(), key=lambda item: item[1]
             ):

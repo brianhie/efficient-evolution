@@ -1,8 +1,5 @@
 from utils import *
-from amis import (
-    get_model_name,
-    reconstruct_multi_models,
-)
+from amis import reconstruct_multi_models
 
 seqs_abs = {
     'medi_vh': 'QVQLQQSGPGLVKPSQTLSLTCAISGDSVSSYNAVWNWIRQSPSRGLEWLGRTYYRSGWYNDYAESVKSRITINPDTSKNQFSLQLNSVTPEDTAVYYCARSGHITVFGVNVDAFDMWGQGTMVTVSS',
@@ -62,14 +59,10 @@ def load_ratios(name, database='abysis'):
 if __name__ == '__main__':
     model_names = [ 'esm1b', 'esm1v1', 'esm1v2', 'esm1v3', 'esm1v4', 'esm1v5', ]
 
-    models = [
-        get_model_name(model_name) for model_name in model_names
-    ]
-
     for name in seqs_abs:
         seq = seqs_abs[name]
         print(f'\n{name}')
-        mutations_models = reconstruct_multi_models(seq, models, alpha=0.5)
+        mutations_models = reconstruct_multi_models(seq, model_names, alpha=0.5)
 
         abysis_likelihood_ratios = load_ratios(name, 'abysis')
         uniref_likelihood_ratios = load_ratios(name, 'uniref')

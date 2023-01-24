@@ -2,10 +2,7 @@ import numpy as np
 import pandas as pd
 import scipy.stats as ss
 
-from amis import (
-    get_model_name,
-    reconstruct_multi_models,
-)
+from amis import reconstruct_multi_models
 from predict_esm import predict_esm
 
 def parse_args():
@@ -50,17 +47,14 @@ def dms_esm(fname, model_locations):
         ]))
     df_esm['ESM_summed'] = summed_log_probs
 
-    models = [
-        get_model_name(model_name) for model_name in
-        [ 'esm1b', 'esm1v1', 'esm1v2', 'esm1v3', 'esm1v4', 'esm1v5', ] 
-    ]
+    model_names = [ 'esm1b', 'esm1v1', 'esm1v2', 'esm1v3', 'esm1v4', 'esm1v5', ] 
     if '_infa' in fname:
         alpha = 0.5
     else:
         alpha = None
     mutations_models, mutations_model_names = reconstruct_multi_models(
         wt_seq,
-        models,
+        models_names,
         alpha=alpha,
         return_names=True,
     )
