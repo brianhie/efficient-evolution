@@ -12,6 +12,8 @@ where `[sequence]` is the wildtype protein sequence you want to evolve. The scri
 
 To recommend mutations to antibody variable domain sequences, we have simply run the above script separately on the heavy and light chain sequences.
 
+We have also made a [Google Colab](https://colab.research.google.com/drive/18QLOmi5yNb1i9wztAzv981Wgk2E4IP4q?usp=sharing) notebook available. However, this notebook requires a full download and installation of the language models for each run. When making many predictions, we recommend the local installation above, as this will allow you to cache and reuse the models.
+
 ### Paper analysis scripts
 
 To reproduce the analysis in the paper, first download and extract data with the commands:
