@@ -215,13 +215,10 @@ def reconstruct_multi_models(
         ],
         alpha=None,
         return_names=False,
-        cuda='cuda'
 ):
     mutations_models, mutations_model_names = {}, {}
     for model_name in model_names:
         model = get_model_name(model_name)
-
-        model.cuda = cuda       # adding cuda attribute to FBModel
 
         if alpha is None:
             wt_new = reconstruct(

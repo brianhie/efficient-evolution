@@ -1,3 +1,4 @@
+import os
 from amis import reconstruct_multi_models
 
 def parse_args():
@@ -31,6 +32,11 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
+
+    # Other option for specifying cuda device.
+    if ":" in args.cuda:
+        old_cuda_visible_devices = os.environ["CUDA_VISIBLE_DEVICES"]
+        os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda.split(':')[-1]
 
     mutations_models = reconstruct_multi_models(
         args.sequence,
