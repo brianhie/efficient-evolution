@@ -140,7 +140,7 @@ class FBModel(object):
         with torch.no_grad():
             embedding = torch.from_numpy(embedding)
             if torch.cuda.is_available():
-                embedding = embedding.to(device='cuda', non_blocking=True)
+                embedding = embedding.to(device=self.cuda, non_blocking=True)
             logits = self.model_.lm_head(embedding)
             logits = logits.to(device='cpu').numpy()
         return logits
