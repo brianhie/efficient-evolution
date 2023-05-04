@@ -15,6 +15,7 @@ class FBModel(object):
         self.alphabet_ = alphabet
         self.unk_idx_ = alphabet.tok_to_idx['<unk>']
         self.offset_ = 1
+        self.cuda = 'cuda'
 
         assert(all(
             -(model.num_layers + 1) <= i <= model.num_layers
@@ -47,7 +48,7 @@ class FBModel(object):
             with torch.no_grad():
                 for batch_idx, (labels, strs, toks) in enumerate(data_loader):
                     if torch.cuda.is_available():
-                        toks = toks.to(device='cuda', non_blocking=True)
+                        toks = toks.to(device=self.cuda, non_blocking=True)
                     out = self.model_(
                         toks,
                         repr_layers=self.repr_layers_,
@@ -92,7 +93,7 @@ class FBModel(object):
                     if isinstance(labels[0], list):
                         labels = labels[0]
                     if torch.cuda.is_available():
-                        toks = toks.to(device='cuda', non_blocking=True)
+                        toks = toks.to(device=self.cuda, non_blocking=True)
                     out = self.model_(
                         toks,
                         repr_layers=self.repr_layers_,
