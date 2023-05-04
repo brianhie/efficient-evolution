@@ -20,6 +20,12 @@ def parse_args():
         default=None,
         help='alpha stringency parameter'
     )
+    parser.add_argument(
+        '--cuda',
+        type=str,
+        default='cuda',
+        help='cuda device to use'
+    )
     args = parser.parse_args()
     return args
 
