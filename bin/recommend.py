@@ -36,6 +36,7 @@ if __name__ == '__main__':
         args.sequence,
         args.model_names,
         alpha=args.alpha,
+        cuda=args.cuda,
     )
     for k, v in sorted(mutations_models.items(), key=lambda item: -item[1]):
         mut_str = f'{k[1]}{k[0] + 1}{k[2]}'
