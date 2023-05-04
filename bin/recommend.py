@@ -33,7 +33,6 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    # Other option for specifying cuda device.
     if ":" in args.cuda:
         os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda.split(':')[-1]
 
