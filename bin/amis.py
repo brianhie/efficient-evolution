@@ -219,7 +219,6 @@ def reconstruct_multi_models(
     mutations_models, mutations_model_names = {}, {}
     for model_name in model_names:
         model = get_model_name(model_name)
-
         if alpha is None:
             wt_new = reconstruct(
                 wt_seq, model, decode_kwargs={ 'exclude': 'unnatural' }
