@@ -35,7 +35,6 @@ if __name__ == '__main__':
 
     # Other option for specifying cuda device.
     if ":" in args.cuda:
-        old_cuda_visible_devices = os.environ["CUDA_VISIBLE_DEVICES"]
         os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda.split(':')[-1]
 
     mutations_models = reconstruct_multi_models(
