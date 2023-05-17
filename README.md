@@ -16,19 +16,39 @@ We have also made a [Google Colab](https://colab.research.google.com/drive/18QLO
 
 ### Paper analysis scripts
 
-To reproduce the analysis in the paper, first download and extract data with the commands:
+To reproduce the analysis in the paper, first download and extract data with the commands: 
+
 ```bash
+git clone https://github.com/brianhie/efficient-evolution.git
+cd efficient-evolution
+
 wget https://zenodo.org/record/6968342/files/data.tar.gz
 tar xvf data.tar.gz
 ```
 
-To acquire mutations to a given antibody, run the command
+### Install dependancy
+
+Using conda package manager is easiest one.
+
 ```bash
-bash bin/eval_models.sh [antibody_name]
+conda create -f enviroments.yml
+conda activate evo
+(evo)python bin/recommend.py [your_sequence]
+```
+
+> When your first run. It tried download esm model and it takes time. 
+
+
+### To acquire mutations to a given antibody.
+
+run the command
+
+```bash
+(evo)bash bin/eval_models.sh [antibody_name]
 ```
 where `[antibody_name]` is one of `medi8852`, `medi_uca`, `mab114`, `mab114_uca`, `s309`, `regn10987`, or `c143`.
 
 DMS experiments can be run with the command
 ```bash
-bash bin/dms.sh
+(evo)bash bin/dms.sh
 ```
