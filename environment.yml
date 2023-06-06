@@ -133,4 +133,3 @@ dependencies:
     - urllib3==1.26.12
     - webencodings==0.5.1
     - zipp==3.11.0
-prefix: /scratch/brianhie/miniconda3/envs/amif
