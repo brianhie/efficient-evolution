@@ -1,13 +1,17 @@
 import torch
 from esm import Alphabet, FastaBatchedDataset, ProteinBertModel, pretrained
 import numpy as np
+import warnings
 
 class FBModel(object):
     def __init__(self, name, repr_layer=[-1]):
         self.name_ = name
         self.repr_layer_ = repr_layer
 
-        model, alphabet = pretrained.load_model_and_alphabet(name)
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore', UserWarning)
+            model, alphabet = pretrained.load_model_and_alphabet(name)
+
         model.eval()
         if torch.cuda.is_available():
             model = model.cuda()
